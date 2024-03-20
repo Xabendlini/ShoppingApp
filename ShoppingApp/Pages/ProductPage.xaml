@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ShoppingApp.Pages.ProductPage"
+             xmlns:services="clr-namespace:ShoppingApp.Services"
+             xmlns:models="clr-namespace:ShoppingApp.Models"
+   Shell.NavBarIsVisible="False"
+             Title="ProductPage"
+
+   >
+
+    <ContentPage.Content>
+        <ListView x:Name="ShoppingItemsListView" ItemsSource="{Binding Items}" HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:ShoppingItems" >
+                    <ViewCell>
+                        <Frame BorderColor="Gray" CornerRadius="20" Padding="10" Margin="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Image Source="{Binding ImagePath}" Aspect="AspectFit" Grid.Row="0" HeightRequest="200"/>
+                                <StackLayout Grid.Row="1" VerticalOptions="Center" Spacing="5" Padding="10">
+                                    <Label Text="{Binding ProductName}" FontSize="Title" FontAttributes="Bold"/>
+                                </StackLayout>
+                                <StackLayout Grid.Row="2" VerticalOptions="Center" Spacing="5" Padding="10">
+                                    <Label Text="{Binding Price}" FontSize="Subtitle"/>
+                                    <Label Text="Quantity" FontSize="Subtitle"/>
+                                    <Label Text="{Binding Quantity}" FontSize="Subtitle"/>
+                                    <Button Text="Add" BackgroundColor="#FFA500" TextColor="White" VerticalOptions="End"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </ContentPage.Content>
+
+</ContentPage>
